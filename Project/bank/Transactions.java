@@ -12,6 +12,9 @@ public class Transactions {
     public void deposit(Account account, double deposit){
         double newBalance = account.getBalance() + deposit;
         account.setBalance(newBalance);
+        Transaction transaction = new Transaction(deposit);
+        account.get.TransactionHistory().addTransaction(transaction);
+
     }
     /**
      * Withdraws the specified amount from the given account.
@@ -24,6 +27,9 @@ public class Transactions {
         if(account.getBalance() >= withdraw){
             double newBalance = account.getBalance() - withdraw;
             account.setBalance(newBalance);
+            Transaction transaction = new transaction(-withdraw);
+            account.getTransactionHistory().addTransaction(transaction);
+            System.out.println("Withdrawal of $" + withdraw + " successful. New balance: $" + account.getBalance());
             return true;
         } else{
             System.out.println("Invalid amount");
@@ -40,6 +46,7 @@ public class Transactions {
     public void transfer(Account account1, Account account2, double amount){
         if(withdraw(account1, amount)){
             deposit(account2, amount);
+            System.out.println("Transfer of $" + amount + " successful from " + account1.getAccNumber() + " to " + account2.getAccNumber());
         } else{
             System.out.println("Invalid amount");
         }
