@@ -7,6 +7,7 @@ public class Account {
     private String accHolder;
     private String pinCode;
     private double balance;
+    private TransactionsHistory transactionsHistory;
     /**
      * This constructor constructs a new account object with given information
      * @param accNumber The account number
@@ -19,6 +20,7 @@ public class Account {
         this.accHolder = accHolder;
         this.pinCode = pinCode;
         this.balance = balance;
+        this.transactionshistory = new TransactionsHistory();
     }
     /**
      * This constructor creates a new account with randomly generated account number
@@ -31,6 +33,7 @@ public class Account {
         this.accHolder = accHolder;
         this.pinCode = pinCode;
         this.balance = 0.0;
+        this.transactionshistory = new TransactionsHistory();
     }
     /**
      * Gets the account number
@@ -87,4 +90,8 @@ public class Account {
     public void setBalance(double balance){
         this.balance = balance;
     }
-}
+
+    public TransactionsHistory getTransactionsHistory() {
+        return transactionshistory;
+
+    }
