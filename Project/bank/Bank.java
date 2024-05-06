@@ -82,7 +82,7 @@ public class Bank {
             return;
         }
         for(int i = 0; i < num_accounts; i++){
-            if(accounts[i].getAccHolder().equals(accHolder)){
+            if(accounts[i].getAccHolder().equals(account)){
                 if(accounts[i].validatePin(pinCode)){
                     accounts[i] = accounts[num_accounts];
                     accounts[num_accounts] = null;
