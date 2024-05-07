@@ -7,55 +7,65 @@ public class Account {
     private String accHolder;
     private String pinCode;
     private double balance;
-    private TransactionsHistory transactionsHistory;
+    private TransactionHistory transactionsHistory;
+
     /**
      * This constructor constructs a new account object with given information
+     *
      * @param accNumber The account number
      * @param accHolder The account holder name and surname
-     * @param pinCode The pin code of the account
-     * @param balance The initial balance of the account
+     * @param pinCode   The pin code of the account
+     * @param balance   The initial balance of the account
      */
-    public Account(String accNumber, String accHolder, String pinCode, double balance){
+    public Account(String accNumber, String accHolder, String pinCode, double balance) {
         this.accNumber = accNumber;
         this.accHolder = accHolder;
         this.pinCode = pinCode;
         this.balance = balance;
-        this.transactionshistory = new TransactionsHistory();
+        this.transactionsHistory = new TransactionHistory();
     }
+
     /**
      * This constructor creates a new account with randomly generated account number
+     *
      * @param accHolder The account holder name and surname
-     * @param pinCode The pin code of the account
-     * @param balance The initial balance of the account
+     * @param pinCode   The pin code of the account
      */
-    public Account(String accHolder, String pinCode){
+    public Account(String accHolder, String pinCode) {
         this.accNumber = AccNumber.createRandomNumber();
         this.accHolder = accHolder;
         this.pinCode = pinCode;
         this.balance = 0.0;
-        this.transactionshistory = new TransactionsHistory();
+        this.transactionsHistory = new TransactionHistory();
     }
+
     /**
      * Gets the account number
+     *
      * @return The account number
      */
-    public String getAccNumber(){
+    public String getAccNumber() {
         return this.accNumber;
     }
+
     /**
      * Gets the account holder name and surname
+     *
      * @return The account holder name and surname
      */
-    public String getAccHolder(){
+    public String getAccHolder() {
         return this.accHolder;
     }
+
     /**
      * Gets the account PIN code
+     *
      * @return The PIN code
      */
-    public String getPinCode(){
+    public String getPinCode() {
         return this.pinCode;
     }
+
     /**
      * Validates the entered PIN code.
      *
@@ -65,33 +75,37 @@ public class Account {
     public boolean validatePin(String enteredPin) {
         return this.pinCode.equals(enteredPin);
     }
+
     /**
      * Sets a new PIN code for the account.
      *
      * @param oldPinCode The old PIN code for verification.
      * @param newPinCode The new PIN code to set.
      */
-    public void setNewPinCode(String oldPinCode, String newPinCode){
-        if(validatePin(oldPinCode))
+    public void setNewPinCode(String oldPinCode, String newPinCode) {
+        if (validatePin(oldPinCode))
             this.pinCode = newPinCode;
     }
+
     /**
      * Gets the current balance of the account.
      *
      * @return The balance of the account.
      */
-    public double getBalance(){
+    public double getBalance() {
         return this.balance;
     }
+
     /**
      * Sets the current balance of the account.
+     *
      * @param balance New balance
      */
-    public void setBalance(double balance){
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public TransactionsHistory getTransactionsHistory() {
-        return transactionshistory;
-
+    public TransactionHistory getTransactionsHistory() {
+        return transactionsHistory;
     }
+}
