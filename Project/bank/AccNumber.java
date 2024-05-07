@@ -3,6 +3,7 @@ package bank;
 /**
  * Utility class for generating and validating bank account numbers using the Luhn algorithm.
  */
+
 public class AccNumber {
     /**
      * Validates a bank account number using the Luhn algorithm.

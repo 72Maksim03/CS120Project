@@ -38,4 +38,5 @@ public class Transaction {
                 ", type=" + type +
                 '}';
     }
+
 }

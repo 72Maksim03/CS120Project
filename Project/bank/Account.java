@@ -1,4 +1,5 @@
 package bank;
+
 /**
  * This class represents a bank account.
  */
@@ -23,6 +24,16 @@ public class Account {
         this.pinCode = pinCode;
         this.balance = balance;
         this.transactionsHistory = new TransactionHistory();
+    }
+
+    /**
+     * This constructor constructs a new account object with given information
+     *
+     * @param info given information
+     */
+    public Account(String info) {
+        String[] in = info.split("_");
+        new Account(in[0], in[1], in[2], Integer.parseInt(in[3]));
     }
 
     /**
@@ -107,5 +118,12 @@ public class Account {
 
     public TransactionHistory getTransactionsHistory() {
         return transactionsHistory;
+    }
+
+    /**
+     * @return a string representation of account
+     */
+    public String toString(){
+        return this.accNumber + "_" + this.accHolder + "_" + this.pinCode + "_" + this.balance;
     }
 }
