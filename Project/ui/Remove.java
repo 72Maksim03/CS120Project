@@ -75,6 +75,8 @@ public class Remove extends JFrame implements ActionListener {
             Account account = previousFrame.getBank().findAccountByAccNumber(accNumber);
             if (account != null) {
                 previousFrame.getBank().removeAccount(account, pin);
+                previousFrame.getDatabase().updateDatabase(previousFrame.getBank().getAccounts(), previousFrame.getBank().getNumAccounts());
+                previousFrame.getDatabase().save();
                 JOptionPane.showMessageDialog(this, "Account deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "No such account found.", "Error", JOptionPane.ERROR_MESSAGE);

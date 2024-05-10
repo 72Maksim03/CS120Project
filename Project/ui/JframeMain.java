@@ -1,6 +1,7 @@
 package ui;
 
 import bank.Bank;
+import database.AccountDatabase;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -9,12 +10,15 @@ import javax.swing.*;
 public class JframeMain extends JFrame implements ActionListener {
     private JLabel heading;
     private Bank bank;
+    private AccountDatabase database;
     public Bank getBank(){
         return this.bank;
     }
+    public AccountDatabase getDatabase(){return this.database;}
     private JButton BtnForCreating, BtnForCheckingB, BtnForDeposit, BtnForWithdraw, BtnForTransfer, BtnForDeleting, BtnForExiting;
     public JframeMain(){
-        bank = new Bank();
+        database = new AccountDatabase();
+        bank = new Bank(database);
         setTitle("BANK MANAGMENT SYSTEM");
         heading = new JLabel("WELCOME");
         heading.setFont(new Font("Osward", Font.BOLD, 38));

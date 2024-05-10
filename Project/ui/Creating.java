@@ -84,6 +84,8 @@ public class Creating extends JFrame implements ActionListener {
             }
             Account account = new Account(accHolder, pinCode);
             previousFrame.getBank().addAccount(account);
+            previousFrame.getDatabase().updateDatabase(previousFrame.getBank().getAccounts(), previousFrame.getBank().getNumAccounts());
+            previousFrame.getDatabase().save();
             JOptionPane.showMessageDialog(this, "Account created successfully with account number: " + account.getAccNumber(), "Success", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         } else if(actionEvent.getSource() == exit){

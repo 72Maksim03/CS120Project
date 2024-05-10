@@ -3,6 +3,7 @@ import bank.Account;
 import bank.Bank;
 import bank.TransactionHistory;
 import bank.Transactions;
+import database.AccountDatabase;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -10,13 +11,17 @@ import java.util.Scanner;
 public class BankConsole {
     private Bank bank;
     private Scanner scanner;
+    private AccountDatabase database;
 
     public BankConsole() {
-        bank = new Bank();
+        database = new AccountDatabase();
+        bank = new Bank(database);
         scanner = new Scanner(System.in);
+
     }
 
     public void start() {
+
         System.out.println("Welcome to the Bank Console!");
         while (true) {
             try{
@@ -51,6 +56,7 @@ public class BankConsole {
                         removeAccount();
                         break;
                     case 7:
+                        database.save();
                         System.out.println("Exiting...");
                         return;
                     default:
@@ -72,6 +78,8 @@ public class BankConsole {
             System.out.println("Enter PIN code");
             String pin = scanner.nextLine();
             bank.removeAccount(account, pin);
+            database.updateDatabase(bank.getAccounts(), bank.getNumAccounts());
+            database.save();
         }
     }
 
@@ -111,6 +119,8 @@ public class BankConsole {
         }
         Account account = new Account(accHolder, pinCode);
         bank.addAccount(account);
+        database.updateDatabase(bank.getAccounts(), bank.getNumAccounts());
+        database.save();
         System.out.println("Account created successfully with account number: " + account.getAccNumber());
     }
 
@@ -122,6 +132,8 @@ public class BankConsole {
             System.out.println("Enter amount to deposit:");
             double amount = scanner.nextDouble();
             new Transactions().deposit(account, amount);
+            database.updateDatabase(bank.getAccounts(), bank.getNumAccounts());
+            database.save();
         } else{
             System.out.println("No such account found");
         }
@@ -135,6 +147,8 @@ public class BankConsole {
             System.out.println("Enter amount to withdraw:");
             double amount = scanner.nextDouble();
             new Transactions().withdraw(account, amount);
+            database.updateDatabase(bank.getAccounts(), bank.getNumAccounts());
+            database.save();
         } else{
             System.out.println("No such account found");
         }
@@ -152,6 +166,8 @@ public class BankConsole {
                 System.out.println("Enter amount to transfer:");
                 double amount = scanner.nextDouble();
                 new Transactions().transfer(accountFrom, accountTo, amount);
+                database.updateDatabase(bank.getAccounts(), bank.getNumAccounts());
+                database.save();
             } else{
                 System.out.println("No such account found");
             }

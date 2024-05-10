@@ -8,7 +8,8 @@ public class Main {
         if(args.length == 0){
             JframeMain frame = new JframeMain();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        }else if (args.length == 1 && args[0].equals("-console")) {
+        }
+        else if (args.length == 1 && args[0].equals("-console")) {
             User user1 = new User("2548", "Bob", "bob@example.com", "+3744567890");
             User user2 = new User("1002", "Emma", "emma@example.com", "+1987654321");
 

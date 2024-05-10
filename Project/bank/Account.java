@@ -1,5 +1,7 @@
 package bank;
 
+import database.MalformedAccountException;
+
 /**
  * This class represents a bank account.
  */
@@ -31,9 +33,9 @@ public class Account {
      *
      * @param info given information
      */
-    public Account(String info) {
+    public Account(String info) throws MalformedAccountException {
         String[] in = info.split("_");
-        new Account(in[0], in[1], in[2], Integer.parseInt(in[3]));
+        new Account(in[0], in[1], in[2], Double.parseDouble(in[3]));
     }
 
     /**
@@ -50,7 +52,13 @@ public class Account {
         this.transactionsHistory = new TransactionHistory();
     }
 
-
+    public Account(Account other) {
+        this.accNumber = other.getAccNumber();
+        this.accHolder = other.getAccHolder();
+        this.pinCode = other.getPinCode();
+        this.balance = other.getBalance();
+        this.transactionsHistory = other.getTransactionsHistory();
+    }
 
     /**
      * Gets the account number

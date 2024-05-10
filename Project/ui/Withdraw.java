@@ -89,6 +89,8 @@ public class Withdraw extends JFrame implements ActionListener {
                 if (account != null && account.validatePin(pinCode)) {
                     if (account.getBalance() >= amoutToWd) {
                         new Transactions().withdraw(account, amoutToWd);
+                        previousFrame.getDatabase().updateDatabase(previousFrame.getBank().getAccounts(), previousFrame.getBank().getNumAccounts());
+                        previousFrame.getDatabase().save();
                         JOptionPane.showMessageDialog(this, "Withdrawal successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(this, "Insufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);

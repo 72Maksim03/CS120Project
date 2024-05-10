@@ -77,6 +77,8 @@ public class Deposit extends JFrame implements ActionListener {
                 if (account != null) {
                     new Transactions().deposit(account, amoutForDep);
                     JOptionPane.showMessageDialog(this, "Deposit successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    previousFrame.getDatabase().updateDatabase(previousFrame.getBank().getAccounts(), previousFrame.getBank().getNumAccounts());
+                    previousFrame.getDatabase().save();
                 } else {
                     JOptionPane.showMessageDialog(this, "No such account found.", "Error", JOptionPane.ERROR_MESSAGE);
                 }

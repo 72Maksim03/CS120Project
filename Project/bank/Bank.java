@@ -1,4 +1,7 @@
 package bank;
+import database.AccountDatabase;
+import database.MalformedAccountException;
+
 import java.util.ArrayList;
 
 /**
@@ -18,6 +21,11 @@ public class Bank {
     public Bank() {
         accounts = new ArrayList<>();
         num_accounts = 0;
+    }
+
+    public Bank(AccountDatabase database) {
+        accounts = database.getDatabase();
+        num_accounts = database.getNumberOfAccounts();
     }
 
     /**
@@ -44,6 +52,8 @@ public class Bank {
         return null;
     }
 
+
+
     /**
      * Finds and returns the account of the specified account holder.
      *
@@ -67,6 +77,7 @@ public class Bank {
     public void addAccount(Account account) {
         accounts.add(account);
         num_accounts++;
+
     }
 
     /**
