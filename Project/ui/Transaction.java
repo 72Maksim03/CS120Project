@@ -87,10 +87,12 @@ public class Transaction extends JFrame implements ActionListener {
                 Account accountFrom = previousFrame.getBank().findAccountByAccNumber(accNumberFrom);
                 Account accountTo = previousFrame.getBank().findAccountByAccNumber(accNumberTo);
                 if (accountFrom != null && accountTo != null) {
-                    new Transactions().transfer(accountFrom, accountTo, amountToTransfer);
-                    JOptionPane.showMessageDialog(this, "Transfer successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    previousFrame.getDatabase().updateDatabase(previousFrame.getBank().getAccounts(), previousFrame.getBank().getNumAccounts());
-                    previousFrame.getDatabase().save();
+                    if(accountFrom.getBalance() >= amountToTransfer){
+                        new Transactions().transfer(accountFrom, accountTo, amountToTransfer);
+                        JOptionPane.showMessageDialog(this, "Transfer successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else{
+                        JOptionPane.showMessageDialog(this, "Insufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid account number(s).", "Error", JOptionPane.ERROR_MESSAGE);
                 }
