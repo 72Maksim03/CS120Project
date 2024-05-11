@@ -93,37 +93,37 @@ public class JframeMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent){
         if(actionEvent.getSource() == BtnForCreating){
             Creating frame1 = new Creating(this);
-            frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame1.setSize(600, 600);
             frame1.setLocationRelativeTo(null);
             frame1.setVisible(true);
         } else if(actionEvent.getSource() == BtnForCheckingB){
             CheckingBalance frame2 = new CheckingBalance(this);
-            frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame2.setSize(600, 600);
             frame2.setLocationRelativeTo(null);
             frame2.setVisible(true);
         } else if(actionEvent.getSource() == BtnForDeposit){
             Deposit frame3 = new Deposit(this);
-            frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame3.setSize(600, 600);
             frame3.setLocationRelativeTo(null);
             frame3.setVisible(true);
         } else if(actionEvent.getSource() == BtnForWithdraw){
             Withdraw frame4 = new Withdraw(this);
-            frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame4.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame4.setSize(600, 600);
             frame4.setLocationRelativeTo(null);
             frame4.setVisible(true);
         } else if(actionEvent.getSource() == BtnForTransfer){
             Transaction frame5 = new Transaction(this);
-            frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame5.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame5.setSize(600, 600);
             frame5.setLocationRelativeTo(null);
             frame5.setVisible(true);
         } else if(actionEvent.getSource() == BtnForDeleting){
             Remove frame6 = new Remove(this);
-            frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame6.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame6.setSize(600, 600);
             frame6.setLocationRelativeTo(null);
             frame6.setVisible(true);
