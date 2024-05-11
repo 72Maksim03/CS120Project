@@ -90,6 +90,8 @@ public class Transaction extends JFrame implements ActionListener {
                     if(accountFrom.getBalance() >= amountToTransfer){
                         new Transactions().transfer(accountFrom, accountTo, amountToTransfer);
                         JOptionPane.showMessageDialog(this, "Transfer successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        previousFrame.getDatabase().updateDatabase(previousFrame.getBank().getAccounts(), previousFrame.getBank().getNumAccounts());
+                        previousFrame.getDatabase().save();
                     } else{
                         JOptionPane.showMessageDialog(this, "Insufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
