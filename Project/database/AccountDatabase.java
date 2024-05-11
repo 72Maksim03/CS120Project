@@ -69,35 +69,10 @@ public class AccountDatabase {
         accounts = new ArrayList<>(db);
         numberOfAccounts = num;
     }
-    public void addAccountToDatabase(Account acc){
-        numberOfAccounts++;
-        accounts.add(acc);
-    }
-    public void removeAccountFromDatabase(Account acc){
-        for (int i = 0; i < numberOfAccounts; i++) {
-            if (accounts.get(i).getAccNumber().equals(acc.getAccNumber())) {
-                accounts.remove(i);
-                numberOfAccounts--;
-                return;
-            }
-        }
-    }
 
 
 
-    public Account findAccountByAccNumber(String accNumber) {
-        for (int i = 0; i < accounts.size(); i++) {
-            if (accounts.get(i).getAccNumber().equals(accNumber)) {
-                return accounts.get(i);
-            }
-        }
-            return null;
-    }
 
-    public void updateAccountInDatabase(Account otherAcc){
-        accounts.set(accounts.indexOf(findAccountByAccNumber(otherAcc.getAccNumber())), new Account(otherAcc));
-
-    }
     private boolean contains(Account acc) {
         for (int i = 0; i < accounts.size(); i++)
             if (accounts.get(i).equals(acc))
